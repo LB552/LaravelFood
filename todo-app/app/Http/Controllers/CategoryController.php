@@ -7,12 +7,22 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    private $categories = [
+        'candy' => ['lollipop'],
+        'caviar' => [],
+        'dairy' => ['milk', 'cheese'],
+        'fruit' => ['banana', 'melon', 'orange'],
+        'meat' => ['hot-dog']
+    ];
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('home', [
+            'categories' => array_keys($this->categories)
+        ]);
     }
 
     /**
@@ -34,9 +44,16 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function show($slug)
     {
-        //
+        if (!array_key_exists($slug, $this->categories)) {
+            abort(404);
+        }
+
+        return view('category', [
+            'category' => $slug,
+            'products' => $this->categories[$slug]
+        ]);
     }
 
     /**

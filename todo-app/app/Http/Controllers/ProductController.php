@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    private $products = [
+        'candy' => ['lollipop'],
+        'caviar' => [],
+        'dairy' => ['milk', 'cheese'],
+        'fruit' => ['banana', 'melon', 'orange'],
+        'meat' => ['hot-dog']
+    ];
+
     /**
      * Display a listing of the resource.
      */
@@ -34,9 +42,20 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show($category, $product)
     {
-        //
+        if (!array_key_exists($category, $this->products)) {
+            abort(404);
+        }
+
+        if (!in_array($product, $this->products[$category])) {
+            abort(404);
+        }
+
+        return view('product', [
+            'category' => $category,
+            'product' => $product
+        ]);
     }
 
     /**
