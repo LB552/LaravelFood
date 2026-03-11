@@ -3,82 +3,74 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    private $products = [
-        'candy' => ['lollipop'],
-        'caviar' => [],
-        'dairy' => ['milk', 'cheese'],
-        'fruit' => ['banana', 'melon', 'orange'],
-        'meat' => ['hot-dog']
-    ];
 
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function show(Category $category, Product $product)
     {
-        //
+        return view('product', compact('category', 'product'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $categories = Category::all();
+
+        return view('product_add', compact('categories'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show($category, $product)
-    {
-        if (!array_key_exists($category, $this->products)) {
-            abort(404);
-        }
-
-        if (!in_array($product, $this->products[$category])) {
-            abort(404);
-        }
-
-        return view('product', [
-            'category' => $category,
-            'product' => $product
+        $request->validate([
+            'name' => 'required',
+            'price' => 'required',
+            'description' => 'required',
+            'category_id' => 'required',
+            'image' => 'required|image'
         ]);
+
+        $path = $request->file('image')->store('products', 'public');
+
+        Product::create([
+            'name' => $request->name,
+            'image' => $path,
+            'price' => $request->price,
+            'description' => $request->description,
+            'category_id' => $request->category_id
+        ]);
+
+        return redirect()->route('category.show', $request->category_id);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Product $product)
     {
-        //
+        $categories = Category::all();
+
+        return view('product_edit', compact('product', 'categories'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Product $product)
     {
-        //
+        $data = $request->only(['name', 'price', 'description', 'category_id']);
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('products', 'public');
+            $data['image'] = $path;
+        }
+
+        $product->update($data);
+
+        return redirect()->route('product.show', [$product->category_id, $product->id]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Product $product)
     {
-        //
+        $category = $product->category_id;
+
+        $product->delete();
+
+        return redirect()->route('category.show', $category);
     }
 }
