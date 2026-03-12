@@ -1,4 +1,11 @@
-<a href="{{ url()->previous() }}" 
-   class="inline-block px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded">
-    ← Back
+<a href="{{ url()->previous() }}" style="
+    display:inline-block;
+    padding:8px 14px;
+    background:#e0e0e0;
+    color:#333;
+    text-decoration:none;
+    border-radius:6px;
+    margin-bottom:15px;
+">
+     Back
 </a>
