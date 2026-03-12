@@ -57,5 +57,5 @@
     <button type="submit">Add Product</button>
 
 </form>
-
+<x-back-button />
 @endsection

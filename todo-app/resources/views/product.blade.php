@@ -10,5 +10,5 @@
 <p>${{ number_format($product->price, 2) }}</p>
 
 <a href="{{ route('product.edit', $product->id) }}">edit</a>
-
+<x-back-button />
 @endsection

@@ -17,3 +17,4 @@
     <button type="submit">Delete</button>
 
 </form>
+<x-back-button />

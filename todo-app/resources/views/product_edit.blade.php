@@ -77,5 +77,5 @@
     <button type="submit">Delete Product</button>
 
 </form>
-
+<x-back-button />
 @endsection

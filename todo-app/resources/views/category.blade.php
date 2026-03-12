@@ -31,5 +31,6 @@
 @endif
 
 <a href="{{ route('product.create') }}">Add</a>
+<x-back-button />
 
 @endsection
