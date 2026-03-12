@@ -3,7 +3,7 @@ Welcome to the admin interface for The Food Store, an online grocery store. The 
 
 ## Installation and running
 To install the full contents of the app, input the following commands into your terminal:
-```bash
+```
 cd LaravelFood-main 
 cd todo-app
 composer install
@@ -15,7 +15,7 @@ php artisan db:seed
 ```
 
 To run the site, input:
-```bash
+```
 php artisan serve
 ```
 
