@@ -17,7 +17,7 @@
 
     <div>
         <label>Current Image</label><br>
-        <img src="{{ asset('storage/' . $product->image) }}" width="200">
+        <img src="{{ $product->image_url }}" width="200">
     </div>
 
     <br>
