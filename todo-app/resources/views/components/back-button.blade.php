@@ -6,6 +6,7 @@
     text-decoration:none;
     border-radius:6px;
     margin-bottom:15px;
+    margin-left:15px;
 ">
      Back
 </a>

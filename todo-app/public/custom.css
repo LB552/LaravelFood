@@ -1,0 +1,22 @@
+body{
+    background-color: rgb(255, 255, 255);
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header{
+    background-color: orange;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+    margin: 0;
+}
+
+h1{
+    color: white;
+    
+}
+a{
+    text-decoration: none;
+}
