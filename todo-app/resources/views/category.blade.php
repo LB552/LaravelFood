@@ -19,7 +19,7 @@
         </a>
 
         <a href="{{ route('product.edit', $product->id) }}">
-            edit
+           - Edit
         </a>
 
     </li>

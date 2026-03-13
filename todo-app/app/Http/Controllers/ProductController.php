@@ -73,4 +73,6 @@ class ProductController extends Controller
 
         return redirect()->route('category.show', $category);
     }
+    
 }
+

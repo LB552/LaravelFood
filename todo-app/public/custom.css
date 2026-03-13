@@ -25,3 +25,49 @@ main{
     align-items: center;
     flex-direction: column;
 }
+h2{
+    color: black;
+    background-color: rgb(249, 232, 103);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+
+}
+li{
+    background-color: darkgray;
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    margin: 1rem;
+}
+ul{
+    display: flex;
+    justify-content: start;
+    background-color: lightgray;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    flex-direction: column-reverse;
+}
+li a{
+  color: black;
+}
+div {
+ display: flex;
+    justify-content: start;
+    background-color: lightgray;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    flex-direction: column-reverse;
+}
+div section {
+    background-color: darkgray;
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    margin: 1rem;
+   
+}
+div section a {
+     color: black;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
