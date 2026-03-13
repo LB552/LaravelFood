@@ -18,6 +18,6 @@
     border-radius:6px;
     margin-bottom:15px;
     margin-left:15px;
-">edit</a>
+">Edit</a>
 <x-back-button />
 @endsection

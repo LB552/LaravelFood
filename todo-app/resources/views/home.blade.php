@@ -13,7 +13,7 @@
     </a>
 
     <a href="{{ route('category.edit', $category->id) }}">
-        edit
+        Edit
     </a>
 
 </div>
