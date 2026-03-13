@@ -73,6 +73,36 @@ class ProductController extends Controller
 
         return redirect()->route('category.show', $category);
     }
-    
+    public function index(Request $request)
+{
+    $sort = $request->input('sort');
+
+    $products = Product::query();
+
+    switch ($sort) {
+        case 'price_asc':
+            $products->orderBy('price', 'asc');
+            break;
+
+        case 'price_desc':
+            $products->orderBy('price', 'desc');
+            break;
+
+        case 'name_asc':
+            $products->orderBy('name', 'asc');
+            break;
+
+        case 'name_desc':
+            $products->orderBy('name', 'desc');
+            break;
+
+        default:
+            $products->orderBy('id', 'desc'); // default sorting
+    }
+
+    return view('products.index', [
+        'products' => $products->get()
+    ]);
+}
 }
 
